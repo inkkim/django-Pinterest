@@ -5,13 +5,13 @@
 
     <div class="eliot_500px_div">
         <div class="mb-5">
-            <h4>Sign Up</h4>
+            <h4>Change Info</h4>
         </div>
-        <form action="{% url 'accountapp:create' %}" method="post">
+        <form action="{% url 'accountapp:update' pk=user.pk %}" method="post">
             {% csrf_token %}
 <!--            {{ form }}-->
             {% bootstrap_form form %}
-            <input type="submit" class="btn btn-dark rounded-pill col-5 mt-4" value="제출">
+            <input type="submit" class="btn btn-dark rounded-pill col-5 mt-4" value="회원가입">
         </form>
     </div>
 
