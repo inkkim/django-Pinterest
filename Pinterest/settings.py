@@ -138,5 +138,6 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-LOGIN_REDIRECT = reverse_lazy('accountapp:hello_world')
-LOGOUT_REDIRECT = reverse_lazy('accountapp:login')
+
+LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
