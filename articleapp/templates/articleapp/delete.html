@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="eliot_500px_div">
+        <div class="mb-5">
+            <h4>Delete Article: {{ target_article.title }}</h4>
+        </div>
+        <form action="{% url 'articleapp:delete' pk=target_article.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger rounded-pill col-5 mt-4" value="삭제">
+        </form>
+    </div>
+
+{% endblock %}
