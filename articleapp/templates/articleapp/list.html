@@ -3,9 +3,18 @@
 {% block content %}
 
 <style>
+
+.container {
+  margin: 0, auto;
+  padding: 0;
+}
+
+.container a {
+  width: 40%;
+  max-width: 250px;
+}
+
 .container div {
-  width: 250px;
-  background-color: antiquewhite;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +26,7 @@
   border-radius: 1rem;
 }
 </style>
+
   {% if article_list %}
   <div class="container">
     {% for article in article_list %}
@@ -35,7 +45,7 @@
   {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
   <div style="text-align: center;">
-    <a href="{% url 'articleapp:create' %}" class = 'btn btn-dark rounded-pill col-2 mt-2 mb-2'>
+    <a href="{% url 'articleapp:create' %}" class = 'btn btn-dark rounded-pill col-3 mt-3 mb-3'>
       업로드
     </a>
   </div>
