@@ -4,26 +4,28 @@
     </div>
     <div class="pinterest_header_navbar">
         <a href="{% url 'articleapp:list' %}" class="pinterest_header_nav">
-            <span>Articles</span>
+            <span>게시글</span>
         </a>
         <a href="{% url 'projectapp:list' %}" class="pinterest_header_nav">
-            <span>Projects  </span>
+            <span>프로젝트</span>
         </a>
-        <span>nav3</span>
+        <a href="{% url 'subscribeapp:list' %}" class="pinterest_header_nav">
+            <span>구독</span>
+        </a>
         {% if not user.is_authenticated %}
         <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="pinterest_header_nav">
-            <span>Login</span>
+            <span>로그인</span>
         </a>
         <a href="{% url 'accountapp:create' %}" class="pinterest_header_nav">
-            <span>SignUp</span>
+            <span>회원가입</span>
         </a>
         {% else %}
         <a href="{% url 'accountapp:detail' pk=user.pk %}" class="pinterest_header_nav">
-            <span>MyPage</span>
+            <span>설정</span>
         </a>
 
         <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
-            <span>Logout</span>
+            <span>로그아웃</span>
         </a>
         {% endif %}
     </div>
