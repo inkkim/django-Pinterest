@@ -77,5 +77,4 @@ __pycache__
 
 media/
 
-Dockerfile
 docker-compose.yml
