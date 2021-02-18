@@ -12,23 +12,29 @@ services:
       - 80:80
 # docker network 정책에 따라 각 컨테이너는 자신의 이름을 도메인으로 사용
   django_container_gunicorn:
-    image: pinterest:5
+    image: pinterest:6
     networks:
       - network
     volumes:
       - static-volume:/home/django-Pinterest/staticfiles
       - media-volume:/home/django-Pinterest/media
+    secrets:
+      - MYSQL_PASSWORD
+      - DJANGO_SECRET_KEY
   mariadb:
     image: mariadb:10.5
     networks:
       - network
     volumes:
       - maria-database:/var/lib/mysql
+    secrets:
+      - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
     environment:
-      MYSQL_ROOT_PASSWORD: password1234
       MYSQL_DATABASE: django
       MYSQL_USER: django
-      MYSQL_PASSWORD: password1234
+      MYSQL_PASSWORD: /run/secrets/MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: /run/secrets/MYSQL_ROOT_PASSWORD
 
 networks:
   network:
@@ -37,3 +43,12 @@ volumes:
   static-volume:
   media-volume:
   maria-database:
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
+  MYSQL_PASSWORD:
+    external: true
+  MYSQL_ROOT_PASSWORD:
+    external: true
+
