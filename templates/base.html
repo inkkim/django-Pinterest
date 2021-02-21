@@ -8,6 +8,19 @@
 
     <hr>
 
+    {% for message in messages %}
+    <div class="text-center">
+        {% if message.level == 40 %}
+        <div class="btn btn-danger rounded-pill px-5 my-3">
+            {{ message }}
+        </div>
+        {% else %}
+        <div class="btn btn-success rounded-pill px-5 my-3">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
     {% block content %}
     {% endblock %}
 
